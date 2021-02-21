@@ -23,7 +23,7 @@ export class ArticleCardComponent implements OnInit {
     this.articles = articles;
   }
 
-  goToArticle(url) {
+  goToArticle(url): void {
     window.open(url, '_blank');
   }
 
