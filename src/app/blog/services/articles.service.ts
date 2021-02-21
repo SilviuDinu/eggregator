@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,9 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class ArticlesService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getArticles() {
-    return null;
+    return this.http.get('/');
   }
 }
