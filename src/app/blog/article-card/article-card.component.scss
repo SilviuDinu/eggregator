@@ -1,19 +1,17 @@
 .article-card-wrapper {
   width: 100%;
-  display: flex;
   .article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    align-items: stretch;
     .article-card {
-      flex: 0.5 1 auto;
-      margin: 5em 8px;
+      margin: 8px 8px;
     }
   }
 }
 ::ng-deep {
-  mat-card-content {
-    margin: 0 16px;
+  mat-card {
+    cursor: pointer;
+    mat-card-content {
+      margin: 0 16px;
+    }
   }
 }

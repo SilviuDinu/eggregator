@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { articles } from '../articles';
 
 @Component({
   selector: 'app-article-card',
@@ -12,7 +13,18 @@ export class ArticleCardComponent implements OnInit {
   defaultElevation = 2;
   raisedElevation = 8;
 
+  public articles: object = null;
+
   ngOnInit(): void {
+    this.setArticles();
+  }
+
+  public setArticles() {
+    this.articles = articles;
+  }
+
+  goToArticle(url) {
+    window.open(url, '_blank');
   }
 
 }
