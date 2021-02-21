@@ -1,0 +1,15 @@
+{
+    "ARTICLES": {
+        "serviceName": "/api/articles",
+        "endpoints": {
+            "ALL": {
+                "method": "GET",
+                "path": "/all"
+            },
+            "TOP": {
+                "method": "GET",
+                "path": "/top"
+            }
+        }
+    }
+}

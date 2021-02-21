@@ -1,0 +1,17 @@
+.article-card-wrapper {
+  width: 100%;
+  .article {
+    align-items: stretch;
+    .article-card {
+      margin: 8px 8px;
+    }
+  }
+}
+::ng-deep {
+  mat-card {
+    cursor: pointer;
+    mat-card-content {
+      margin: 0 16px;
+    }
+  }
+}

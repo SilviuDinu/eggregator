@@ -1,0 +1,32 @@
+<div class="article-card-wrapper">
+  <div
+    fxLayout="row wrap"
+    fxLayoutGap="8px"
+    fxLayout.sm="column wrap"
+    fxLayout.xs="column wrap"
+    fxLayoutAlign="center"
+    class="article">
+    <div
+      *ngFor="let article of articles"
+      fxFlex="45"
+      (click)="goToArticle(article.url)"
+      class="article-card">
+      <mat-card appMaterialElevation [defaultElevation]="defaultElevation" [raisedElevation]="raisedElevation">
+        <mat-card-header>
+          <mat-card-title>{{ article.title }}</mat-card-title>
+          <mat-card-subtitle>
+            <span>
+              {{ 'articles.published' | token : { author: article.author, publishedAt: article.publishedAt | dateFormat: 'DD MMM YYYY' } }}
+            </span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{ article.description || article.content }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="article-card-actions"></mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
