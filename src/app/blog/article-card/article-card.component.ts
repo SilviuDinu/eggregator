@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { articles } from '../articles';
+import { ArticlesService } from '../services/articles.service';
 
 @Component({
   selector: 'app-article-card',
@@ -8,7 +9,9 @@ import { articles } from '../articles';
 })
 export class ArticleCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private articleService: ArticlesService
+  ) { }
 
   defaultElevation = 2;
   raisedElevation = 8;

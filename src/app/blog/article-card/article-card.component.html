@@ -11,7 +11,10 @@
       fxFlex="45"
       (click)="goToArticle(article.url)"
       class="article-card">
-      <mat-card appMaterialElevation [defaultElevation]="defaultElevation" [raisedElevation]="raisedElevation">
+      <mat-card 
+        appMaterialElevation
+        [defaultElevation]="defaultElevation"
+        [raisedElevation]="raisedElevation">
         <mat-card-header>
           <mat-card-title>{{ article.title }}</mat-card-title>
           <mat-card-subtitle>
