@@ -16,10 +16,14 @@ export class ArticleCardComponent implements OnInit {
   defaultElevation = 2;
   raisedElevation = 8;
 
-  public articles: object = null;
+  public articles = null;
 
   ngOnInit(): void {
-    this.setArticles();
+    this.articleService.getArticles()
+      .subscribe((response) => {
+        console.log(response);
+        this.articles = articles;
+      });
   }
 
   public setArticles() {
