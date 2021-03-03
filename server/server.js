@@ -6,6 +6,7 @@ const cors = require("cors");
 const yup = require("yup");
 const monk = require("monk");
 const csp = require("helmet-csp");
+const articles = require("./mocks/all.articles.json");
 const NewsAPI = require("newsapi");
 require("dotenv").config();
 
@@ -52,12 +53,20 @@ app.use(cors());
 app.use(express.json());
 // app.use(express.static('./public'));
 
-app.get("/api/articles/all", async (req, res, next) => {
-  const { sources, q, domains, from, to, language, page } = req.params;
-  console.log(req.params)
+app.post("/api/articles/all", async (req, res, next) => {
+  const {
+    sources = null,
+    q = "bitcoin",
+    domains,
+    from,
+    to,
+    language = "ro",
+    page,
+  } = req.body || {};
+  console.log(q);
   try {
     newsapi.v2
-      .everything(req.params)
+      .everything({ language, q })
       .then((response) => {
         res.json(response);
       })
@@ -69,8 +78,8 @@ app.get("/api/articles/all", async (req, res, next) => {
   }
 });
 
-app.get("/api/articles/top", async (req, res, next) => {
-  const { sources, q, category, language, country } = req.params;
+app.post("/api/articles/top", async (req, res, next) => {
+  const { sources, q, category, language, country } = req.body;
   try {
     newsapi.v2
       .topHeadlines(req.params)
@@ -93,6 +102,17 @@ app.use((error, req, res, next) => {
     message: error.message,
     stack: process.env.NODE_ENV === "production" ? "🥞" : error.stack,
   });
+});
+
+// MOCK ENDPOINTS
+
+app.post("/api/all-articles", async (req, res, next) => {
+  console.log('dsa')
+  try {
+    res.json(articles);
+  } catch (err) {
+    next(err);
+  }
 });
 
 const port = process.env.PORT || 3000;

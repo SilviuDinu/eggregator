@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host=0.0.0.0 --disable-host-check",
+    "serve": "ng serve --host=0.0.0.0 --disable-host-check --proxy-config proxy.conf.json",
+    "server": "cd server && npm run dev",
     "build": "ng build",
     "build-tokens": "node scripts/merge-tokens.js",
     "test": "ng test",

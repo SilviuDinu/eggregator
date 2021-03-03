@@ -11,12 +11,15 @@
       fxFlex="45"
       (click)="goToArticle(article.url)"
       class="article-card">
-      <mat-card appMaterialElevation [defaultElevation]="defaultElevation" [raisedElevation]="raisedElevation">
+      <mat-card 
+        appMaterialElevation
+        [defaultElevation]="defaultElevation"
+        [raisedElevation]="raisedElevation">
         <mat-card-header>
           <mat-card-title>{{ article.title }}</mat-card-title>
           <mat-card-subtitle>
             <span>
-              {{ 'articles.published' | token : { author: article.author, publishedAt: article.publishedAt | dateFormat: 'DD MMM YYYY' } }}
+              {{ 'articles.published' | token : { author: article.author || "Unknown", publishedAt: article.publishedAt | dateFormat: 'DD MMM YYYY' } }}
             </span>
           </mat-card-subtitle>
         </mat-card-header>
