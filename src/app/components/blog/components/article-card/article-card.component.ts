@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { articles } from '../articles';
-import { ArticlesService } from '../services/articles.service';
+import { ArticlesService } from 'src/app/services/articles.service';
+
 
 @Component({
   selector: 'app-article-card',
@@ -16,19 +16,24 @@ export class ArticleCardComponent implements OnInit {
   defaultElevation = 2;
   raisedElevation = 8;
 
-  public articles = null;
+  public articles = [];
 
   ngOnInit(): void {
-    this.articleService.getArticles()
-      .subscribe((response) => {
-        console.log(response);
+    this.articleService.getArticles(
+      {},
+      {}
+    )
+      .subscribe((articles) => {
+        console.log(articles);
         this.articles = articles;
+      }, err => {
+        throw new Error(err);
       });
   }
 
-  public setArticles() {
-    this.articles = articles;
-  }
+  // public setArticles() {
+  //   this.articles = articles;
+  // }
 
   goToArticle(url): void {
     window.open(url, '_blank');

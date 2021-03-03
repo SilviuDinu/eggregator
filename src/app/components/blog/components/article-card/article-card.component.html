@@ -19,7 +19,7 @@
           <mat-card-title>{{ article.title }}</mat-card-title>
           <mat-card-subtitle>
             <span>
-              {{ 'articles.published' | token : { author: article.author, publishedAt: article.publishedAt | dateFormat: 'DD MMM YYYY' } }}
+              {{ 'articles.published' | token : { author: article.author || "Unknown", publishedAt: article.publishedAt | dateFormat: 'DD MMM YYYY' } }}
             </span>
           </mat-card-subtitle>
         </mat-card-header>
