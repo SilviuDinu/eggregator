@@ -3,16 +3,29 @@
   .article {
     align-items: stretch;
     .article-card {
-      margin: 8px 8px;
+      margin: 8px;
     }
   }
 }
 ::ng-deep {
+
   mat-card {
     cursor: pointer;
-    height: 100%;
-    mat-card-content {
-      margin: 0 16px;
+
+    .content-wrapper {
+      margin-top: 8px;
+      .card-content {
+        margin: 0 16px;
+      }
     }
   }
+}
+
+
+@media (max-width: 800px) {
+
+  .card-image {
+    padding: 8px 16px;
+  }
+
 }
