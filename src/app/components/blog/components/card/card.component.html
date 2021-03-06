@@ -1,0 +1,54 @@
+<mat-card
+  appMaterialElevation
+  [defaultElevation]="defaultElevation"
+  [raisedElevation]="raisedElevation"
+  fxLayout="row"
+  fxLayout.sm="row wrap"
+  fxLayout.xs="row wrap"
+>
+  <img
+    *ngIf="image"
+    fxFlex="40%"
+    fxFlex.sm="100%"
+    fxFlex.xs="100%"
+    fxLayoutAlign="start center"
+    class="card-image"
+    fxFlexFill
+    src="{{image}}"
+  />
+
+  <div
+    class="content-wrapper"
+    fxLayout="column wrap"
+    fxLayout.sm="row wrap"
+    fxLayout.xs="row wrap"
+    fxLayoutAlign="start center"
+    fxFlex="image ? 55% : 100%"
+    fxFlex.sm="100%"
+    fxFlex.xs="100%"
+  >
+    <div class="card-header" fxLayout="row wrap" fxLayoutAlign="center center">
+      <mat-card-header>
+        <mat-card-title *ngIf="title">{{ title }}</mat-card-title>
+        <mat-card-subtitle *ngIf="subTitle">
+          <span>
+            {{ subTitle }}
+          </span>
+        </mat-card-subtitle>
+      </mat-card-header>
+    </div>
+
+    <div
+      *ngIf="description || body"
+      class="card-content"
+      fxLayout="row wrap"
+      fxLayoutAlign="center center"
+    >
+      <mat-card-content>
+        <p>
+          {{ description || body }}
+        </p>
+      </mat-card-content>
+    </div>
+  </div>
+</mat-card>
