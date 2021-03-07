@@ -4,14 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MaterialElevationDirective } from '../../directives/material-elevation-directive.directive';
+import { MaterialElevationDirective } from '../../data/directives/material-elevation-directive.directive';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DateFormatPipe } from '../../pipes/date-format.pipe';
-import { TokenPipe } from '../../pipes/token.pipe';
+import { DateFormatPipe } from '../../data/pipes/date-format.pipe';
+import { TokenPipe } from '../../data/pipes/token.pipe';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
-  declarations: [ArticleCardComponent, MaterialElevationDirective, DateFormatPipe, TokenPipe],
+  declarations: [ArticleCardComponent, MaterialElevationDirective, DateFormatPipe, TokenPipe, CardComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -19,6 +20,6 @@ import { TokenPipe } from '../../pipes/token.pipe';
     FlexLayoutModule,
     HttpClientModule
   ],
-  exports: [ArticleCardComponent]
+  exports: [ArticleCardComponent, CardComponent]
 })
 export class BlogModule { }
