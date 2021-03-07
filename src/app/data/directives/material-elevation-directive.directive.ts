@@ -34,6 +34,10 @@ export class MaterialElevationDirective implements OnChanges {
 
   setElevation(amount: number) {
     // remove all elevation classes
+    if (!this.element) {
+      return;
+    }
+
     const classesToRemove = Array.from((this.element.nativeElement as HTMLElement).classList).filter(c => c.startsWith('mat-elevation-z'));
     classesToRemove.forEach((c) => {
       this.renderer.removeClass(this.element.nativeElement, c);

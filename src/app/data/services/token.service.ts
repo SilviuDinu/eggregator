@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { get } from 'lodash';
-import tokens from '../../assets/tokens.json';
+import tokens from '../../../assets/tokens.json';
 
 @Injectable({
   providedIn: 'root'
