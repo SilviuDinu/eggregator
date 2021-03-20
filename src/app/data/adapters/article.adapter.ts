@@ -1,7 +1,6 @@
 import { Adapter } from './adapter';
 import { Injectable } from '@angular/core';
 import { Article } from '../models/article.model';
-import { DateFormatPipe } from '../pipes/date-format.pipe';
 import moment from 'moment';
 
 @Injectable({

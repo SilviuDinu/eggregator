@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlesService } from 'src/app/data/services/articles.service';
+import { ArticlesService } from '@data/services/articles.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class ArticleCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.articleService.getArticles(
-      {},
+      'ALL ARTICLES',
       {}
     )
       .subscribe((articles) => {
@@ -31,9 +31,6 @@ export class ArticleCardComponent implements OnInit {
       });
   }
 
-  // public setArticles() {
-  //   this.articles = articles;
-  // }
 
   goToArticle(url): void {
     window.open(url, '_blank');

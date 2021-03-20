@@ -53,7 +53,7 @@ app.use(cors());
 app.use(express.json());
 // app.use(express.static('./public'));
 
-app.post("/api/articles/all", async (req, res, next) => {
+app.get("/api/articles/all", async (req, res, next) => {
   const {
     sources = null,
     q = "bitcoin",
@@ -62,8 +62,8 @@ app.post("/api/articles/all", async (req, res, next) => {
     to,
     language = "ro",
     page,
-  } = req.body || {};
-  console.log(q);
+  } = req.params || {};
+  console.log(req.params);
   try {
     newsapi.v2
       .everything({ language, q })
@@ -78,8 +78,8 @@ app.post("/api/articles/all", async (req, res, next) => {
   }
 });
 
-app.post("/api/articles/top", async (req, res, next) => {
-  const { sources, q, category, language, country } = req.body;
+app.get("/api/articles/top", async (req, res, next) => {
+  const { sources, q, category, language, country } = req.params;
   try {
     newsapi.v2
       .topHeadlines(req.params)

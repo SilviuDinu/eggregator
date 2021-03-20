@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ARTICLES } from '../../../assets/endpoints.config.json';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { EndpointsService } from './endpoints.service';
 import { ArticleAdapter } from '../adapters/article.adapter';
 import { ArticlesResponse } from '../responses/articles.response';
+import { Article } from '../models/article.model';
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesService {
 
-  private options = { observe: 'body', responseType: 'json' };
+  private headers = new Headers();
 
   constructor(
     private http: HttpClient,
@@ -20,11 +20,10 @@ export class ArticlesService {
   ) { }
 
 
-  getArticles(body: object, options?: object): Observable<any> {
-    const endpoint = this.endpointService.getEndpoint('ALL ARTICLES');
-    return this.http.post<ArticlesResponse>(endpoint, body, options)
+  getArticles(endpoint: string, options?: object): Observable<Article[]> {
+    return this.http.get<ArticlesResponse>(this.endpointService.getEndpoint(endpoint), options)
       .pipe(
-        map(({articles}) => {
+        map(({ articles }) => {
           return articles.map((item) => {
             return this.adapter.adapt(item);
           });
